@@ -9,4 +9,9 @@ public class InitialController {
     public String home() {
         return "home";
     }
+
+    @RequestMapping(value = "/pro")
+    public String proResource() {
+        return "pro";
+    }
 }
