@@ -1,5 +1,5 @@
 <@layout.extends name="template.ftl">
     <@layout.put block="content">
-    Content replaced by homepage
+    Witam na stronie głównej. Zapoznaj się z funkcjonalnością serwisu
     </@layout.put>
 </@layout.extends>

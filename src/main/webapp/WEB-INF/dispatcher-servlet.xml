@@ -9,22 +9,26 @@
     <context:annotation-config/>
     <context:component-scan base-package="com.reportme"/>
 
+    <mvc:resources mapping="/resources/**" location="resources/"/>
 
     <!-- template inheritance -->
     <import resource="classpath:/kr/pe/kwonnam/freemarker/inheritance/freemarker-layout-directives.xml"/>
 
     <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
         <property name="templateLoaderPath" value="/WEB-INF/views/"/>
-        <property name="defaultEncoding" value="utf-8"/>
+        <property name="defaultEncoding" value="UTF-8"/>
         <property name="freemarkerVariables">
             <map>
                 <entry key="layout" value-ref="freemarkerLayoutDirectives"/>
             </map>
         </property>
     </bean>
+    <!-- template inheritance -->
 
     <bean name="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
         <property name="cache" value="true"/>
         <property name="suffix" value=".ftl"/>
+        <property name="contentType" value="text/html;charset=UTF-8"/>
+        <!--utf-8 works because of this line.. -->
     </bean>
 </beans>

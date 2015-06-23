@@ -1,0 +1,172 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+   Reset Erica Meyera
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* MENU */
+
+body {
+    background-image: url("bg-image.png");
+    margin: 0;
+    padding: 0;
+    font-family: "Ek Mukta", serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+.clearfix:after {
+    display: block;
+    clear: both;
+    content: '';
+}
+
+.menu-wrap {
+    width: 100%;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+    background-color: #9C8B73;
+}
+
+.menu {
+    width: 1000px;
+    margin: 0px auto;
+}
+
+.menu li {
+    margin: 0px;
+    list-style: none;
+}
+
+.menu a {
+    transition: all linear 0.15s;
+    color: dimgray;
+}
+
+.menu > ul > li {
+    float: left;
+    display: inline-block;
+    position: relative;
+    font-size: 19px;
+}
+
+.menu > ul > li > a {
+    padding: 15px 40px;
+    display: inline-block;
+    text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.4);
+    color: #FF91A9;
+}
+
+.menu > ul > li:hover > a {
+    background: #B5A288;
+}
+
+.sub-menu {
+    width: 160%;
+    padding: 0px;
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity linear 0.15s;
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+    background-color: #B5A288;
+}
+
+.menu li:hover .sub-menu {
+    z-index: 1;
+    opacity: 1;
+}
+
+.sub-menu li {
+    display: block;
+    font-size: 16px;
+}
+
+.sub-menu li a {
+    padding: 10px 30px;
+    display: block;
+}
+
+.sub-menu li a:hover {
+    background-color: #9C8B73;
+}
+
+/* CONTENT */
+
+.content {
+    margin: 10px 20%;
+    padding: 10px;
+    background-color: #9C8B73;
+    border-radius: 3px;
+
+    font-family: "Ek Mukta", serif;
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* FOOTER */
+
+.footer-wrap {
+    width: 100%;
+    box-shadow: 1px 0px 3px rgba(0, 0, 0, 0.2);
+    background-color: #9C8B73;
+    padding: 10px 15px;
+    position: absolute;
+    bottom: 0;
+}
+
+.footer p {
+    text-align: center;
+}
