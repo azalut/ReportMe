@@ -1,8 +1,12 @@
+<#import "spring.ftl" as spring/>
+
 <html>
 <head>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ek+Mukta">
-    <link rel="stylesheet" type="text/css" href="resources/styles/style.css"/>
+    <#-- this concrete path: '/resources/style.css' is needed to css be loaded on VPS properly with and wihtout '/' after URL -->
+    <link rel="stylesheet" type="text/css" href="<@spring.url '/resources/style.css' />"/>
+
 </head>
 <body>
 <div class="page-wrap">
