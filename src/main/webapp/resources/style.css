@@ -58,9 +58,8 @@ table {
 
 body {
     background-image: url("bg-image.png");
-    margin: 0;
-    padding: 0;
     font-family: "Ek Mukta", serif;
+    color: #383838;
 }
 
 a {
@@ -156,17 +155,59 @@ a {
     box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
 }
 
+.content p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 /* FOOTER */
 
 .footer-wrap {
     width: 100%;
     box-shadow: 1px 0px 3px rgba(0, 0, 0, 0.2);
     background-color: #9C8B73;
-    padding: 10px 15px;
     position: absolute;
     bottom: 0;
 }
 
+.footer {
+    margin: 10px;
+}
+
 .footer p {
+    text-align: center;
+    padding: 5px;
+}
+
+/* INPUT ELEMENTS */
+
+.css-input {
+    margin: 3px;
+    padding: 3px;
+    font-size: 14px;
+    border-radius: 3px;
+    border: 2px solid #ff91a9;
+    color: #7a7a7a;
+    box-shadow: 0px 0px 3px 0px rgba(42, 42, 42, .100);
+}
+
+.css-input:focus {
+    outline: none;
+}
+
+.btn {
+    margin: 3px;
+    font-size: 14px;
+    border-radius: 3px;
+    background-color: #ff91a9;
+    padding: 10px 20px;
+    border: none;
+}
+
+.btn:hover {
+    background-color: #E8899E;
+}
+
+.center-content {
     text-align: center;
 }

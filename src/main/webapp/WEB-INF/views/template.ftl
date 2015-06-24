@@ -13,7 +13,7 @@
     <div class="menu-wrap">
         <nav class="menu">
             <ul class="clearfix">
-                <li><a href="#">Strona główna</a></li>
+                <li><a href="<@spring.url '/'/>">Strona główna</a></li>
                 <li>
                     <a href="#">Oferta</a>
 
@@ -26,7 +26,7 @@
                 </li>
                 <li><a href="#">Projekty</a></li>
                 <li><a href="#">Kontakt</a></li>
-                <li><a href="/login">Zaloguj</a></li>
+                <li><a href="<@spring.url '/login'/>">Zaloguj</a></li>
             </ul>
         </nav>
     </div>
