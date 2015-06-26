@@ -2,24 +2,26 @@ package com.reportme.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collections;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 @Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Person implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.TABLE)
     protected int id;
     @Embedded
     protected PersonData personData;
     protected boolean enabled;
 
     @OneToMany
-    protected List<Notification> myNotifications = Collections.<Notification>emptyList();
+    protected List<Notification> myNotifications = new ArrayList<>();
     @ElementCollection(targetClass = Role.class)
     @Enumerated(value = EnumType.STRING)
-    protected Set<Role> roleSet;
+    protected Set<Role> roleSet = new HashSet<>();
     @Embedded
     protected Address address;
 

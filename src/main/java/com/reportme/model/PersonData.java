@@ -11,6 +11,9 @@ public class PersonData {
     private String lastname;
     private String email;
 
+    public PersonData() {
+    }
+
     public PersonData(String nickname, String password, String name, String lastname, String email) {
         this.nickname = nickname;
         this.password = password;

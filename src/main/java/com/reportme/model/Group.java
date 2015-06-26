@@ -1,21 +1,19 @@
 package com.reportme.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "groupp")
 public class Group implements Serializable {
     @Id
     @GeneratedValue
     private int id;
     private String name;
     @OneToMany
-    private List<Notification> notificationList = Collections.<Notification>emptyList();
+    private List<Notification> notificationList = new ArrayList<>();
 
     public Group() {
     }
