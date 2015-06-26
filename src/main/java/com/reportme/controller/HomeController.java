@@ -1,14 +1,19 @@
 package com.reportme.controller;
 
-import com.reportme.model.SomeDao;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.reportme.model.Notification;
+import com.reportme.model.NotificationStatus;
+import com.reportme.model.Occupant;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 @Controller
 public class HomeController {
-    @Autowired
-    private SomeDao someDao;
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @RequestMapping(value = {"/", "/home"})
     public String home() {
@@ -16,8 +21,8 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/login")
+    @Transactional
     public String login() {
-        someDao.saveSomeEntity();
         return "home/login";
     }
 

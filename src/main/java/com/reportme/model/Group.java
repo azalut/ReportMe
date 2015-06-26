@@ -1,23 +1,26 @@
 package com.reportme.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.io.Serializable;
+import java.util.Collections;
+import java.util.List;
 
 @Entity
-public class SomeEntity implements Serializable {
+public class Group implements Serializable {
     @Id
     @GeneratedValue
     private int id;
-    @Column
     private String name;
+    @OneToMany
+    private List<Notification> notificationList = Collections.<Notification>emptyList();
 
-    public SomeEntity() {
+    public Group() {
     }
 
-    public SomeEntity(String name) {
+    public Group(String name) {
         this.name = name;
     }
 
@@ -37,11 +40,11 @@ public class SomeEntity implements Serializable {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "SomeEntity{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+    public List<Notification> getNotificationList() {
+        return notificationList;
+    }
+
+    public void setNotificationList(List<Notification> notificationList) {
+        this.notificationList = notificationList;
     }
 }
