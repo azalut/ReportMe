@@ -4,7 +4,7 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class PersonData {
-    private String nickname;
+    private String username;
     private String password;
 
     private String name;
@@ -14,20 +14,20 @@ public class PersonData {
     public PersonData() {
     }
 
-    public PersonData(String nickname, String password, String name, String lastname, String email) {
-        this.nickname = nickname;
+    public PersonData(String username, String password, String name, String lastname, String email) {
+        this.username = username;
         this.password = password;
         this.name = name;
         this.lastname = lastname;
         this.email = email;
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
