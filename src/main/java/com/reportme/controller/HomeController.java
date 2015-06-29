@@ -9,7 +9,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Set;
 
 @Controller
 public class HomeController {
@@ -40,6 +39,8 @@ public class HomeController {
 
         administrator.getCreatedGroups().add(group);
         administrator.getMyNotifications().add(notification);
+
+
 
         return "home/login";
     }
