@@ -10,18 +10,22 @@
        <import resource="dispatcher-servlet.xml" />
 
        <security:http auto-config="true">
-              <security:intercept-url pattern="/pro" access="hasRole('ROLE_USER')"/>
-              <security:logout logout-url="/logout" logout-success-url="/"/>
-              <security:form-login login-page="/login"/>
-              <security:csrf/>
+           <security:intercept-url pattern="/pro" access="hasRole('ROLE_USER')"/>
+           <security:logout logout-url="/logout" logout-success-url="/"/>
+           <security:form-login login-page="/login"/>
+           <security:csrf/>
        </security:http>
 
        <security:authentication-manager>
-              <security:authentication-provider>
-                     <!--<security:user-service>
-                            <security:user name="maciek" password="maciek" authorities="ROLE_USER"/>
-                     </security:user-service>-->
-                     <security:jdbc-user-service data-source-ref="dataSource"/>
-              </security:authentication-provider>
+           <security:authentication-provider>
+               <security:jdbc-user-service data-source-ref="dataSource"
+                                           users-by-username-query="select username, password, enabled from administrator where username=?"/>
+           </security:authentication-provider>
+
+
+           <security:authentication-provider>
+               <security:jdbc-user-service data-source-ref="dataSource"
+                                           users-by-username-query="select username, password, enabled from occupant where username=?"/>
+           </security:authentication-provider>
        </security:authentication-manager>
 </beans>
