@@ -21,7 +21,7 @@ public abstract class Person implements Serializable {
 
     @OneToMany
     protected List<Notification> myNotifications = new ArrayList<>();
-    @ElementCollection(targetClass = Role.class)
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @Enumerated(value = EnumType.STRING)
     protected Set<Role> roleSet = new HashSet<>();
     @Embedded
