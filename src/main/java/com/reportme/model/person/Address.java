@@ -1,4 +1,4 @@
-package com.reportme.model;
+package com.reportme.model.person;
 
 import javax.persistence.Embeddable;
 

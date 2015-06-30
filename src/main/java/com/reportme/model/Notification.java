@@ -1,5 +1,7 @@
 package com.reportme.model;
 
+import com.reportme.model.person.Person;
+
 import javax.persistence.*;
 import java.io.Serializable;
 

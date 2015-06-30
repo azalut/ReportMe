@@ -1,4 +1,6 @@
-package com.reportme.model;
+package com.reportme.model.person;
+
+import com.reportme.model.Notification;
 
 import javax.persistence.*;
 import java.io.Serializable;

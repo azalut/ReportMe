@@ -1,4 +1,4 @@
-package com.reportme.model;
+package com.reportme.model.person;
 
 public enum Role {
     ROLE_OCCUPANT("ROLE_OCCUPANT"), ROLE_ADMIN("ROLE_ADMIN");

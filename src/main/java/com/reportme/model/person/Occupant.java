@@ -1,4 +1,6 @@
-package com.reportme.model;
+package com.reportme.model.person;
+
+import com.reportme.model.Group;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
