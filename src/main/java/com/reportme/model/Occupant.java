@@ -15,8 +15,8 @@ public class Occupant extends Person implements Serializable {
     public Occupant() {
     }
 
-    public Occupant(PersonData personData, boolean enabled, Set<Role> roleSet, Address address) {
-        super(personData, enabled, roleSet, address);
+    public Occupant(PersonData personData, String username, String password, boolean enabled, Set<Role> roleSet, Address address) {
+        super(personData, username, password, enabled, roleSet, address);
     }
 
     public List<Group> getMyGroups() {

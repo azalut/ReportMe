@@ -1,6 +1,8 @@
 package com.reportme.controller;
 
 import com.reportme.model.*;
+import com.reportme.repository.PersonRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,9 +26,9 @@ public class HomeController {
     @Transactional
     public String login() {
         // ADMIN
-        PersonData adminPersonData = new PersonData("nickname", "haslo", "imie", "nazwisko", "email@email.pl");
+        PersonData adminPersonData = new PersonData("imie", "nazwisko", "email@email.pl");
         Address address = new Address("ulica", "78-100", "kolobrzeg");
-        Administrator administrator = new Administrator(adminPersonData, true, new HashSet<>(Arrays.asList(Role.ROLE_ADMIN, Role.ROLE_OCCUPANT)), address);
+        Administrator administrator = new Administrator(adminPersonData, "username", "haslo", true, new HashSet<>(Arrays.asList(Role.ROLE_ADMIN, Role.ROLE_OCCUPANT)), address);
         entityManager.persist(administrator);
 
         // SAVE NEW GROUP
@@ -39,8 +41,6 @@ public class HomeController {
 
         administrator.getCreatedGroups().add(group);
         administrator.getMyNotifications().add(notification);
-
-
 
         return "home/login";
     }
