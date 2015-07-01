@@ -101,7 +101,7 @@ a {
 }
 
 .menu > ul > li > a {
-    padding: 15px 40px;
+    padding: 15px 20px;
     display: inline-block;
     text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.4);
     color: #FF91A9;
@@ -146,13 +146,16 @@ a {
 /* CONTENT */
 
 .content {
-    margin: 10px 20%;
+    margin: 10px 15%;
     padding: 10px;
     background-color: #9C8B73;
     border-radius: 3px;
 
     font-family: "Ek Mukta", serif;
     box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+
+    height: auto;
+    min-height: 250px;
 }
 
 .content p {
@@ -210,13 +213,4 @@ a {
 
 .center-content {
     text-align: center;
-}
-
-.register-box {
-    display: inline-block;
-    width: 40%;
-    height: 300px;
-    border: 1px solid darkslategray;
-    margin: 10px;
-    padding: 10px;
 }

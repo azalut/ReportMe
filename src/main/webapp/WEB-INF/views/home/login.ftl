@@ -5,6 +5,10 @@
     <div class="center-content">
         <p>Zaloguj się</p>
 
+        <#if SPRING_SECURITY_LAST_EXCEPTION?has_content>
+            <p>${SPRING_SECURITY_LAST_EXCEPTION.message}</p>
+        </#if>
+
         <form action="<@spring.url '/login' />" method="post">
             <input type="text" name="username" class="css-input" placeholder="nazwa użytkownika.."/><br>
             <input type="password" name="password" class="css-input" placeholder="hasło.."/><br>

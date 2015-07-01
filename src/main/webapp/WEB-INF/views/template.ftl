@@ -27,6 +27,7 @@
                 <li><a href="#">Projekty</a></li>
                 <li><a href="#">Kontakt</a></li>
                 <li><a href="<@spring.url '/login'/>">Zaloguj</a></li>
+                <li><a href="<@spring.url '/register'/>">Rejestracja</a></li>
             </ul>
         </nav>
     </div>
@@ -34,7 +35,7 @@
     <div class="content-wrap">
         <div class="content">
         <@layout.block name="content">
-            </@layout.block>
+        </@layout.block>
         </div>
     </div>
 

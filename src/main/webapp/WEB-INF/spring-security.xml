@@ -21,7 +21,7 @@
 
            <security:authentication-provider>
                <security:user-service>
-                   <security:user name="maciek" password="maciek" authorities="ROLE_ADMIN, ROLE_USER"/>
+                   <security:user name="maciek" password="maciek" authorities="ROLE_ADMIN, ROLE_OCCUPANT"/>
                </security:user-service>
            </security:authentication-provider>
        </security:authentication-manager>
