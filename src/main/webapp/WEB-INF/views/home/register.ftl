@@ -1,6 +1,12 @@
 <@layout.extends name="template.ftl">
     <@layout.put block="content">
-    <#--TODO: register form-->
-    Register form here
+        <div id="register-box-wrapper">
+            <div class="register-box register-box-left">
+                something
+            </div>
+            <div class="register-box register-box-right">
+                something
+            </div>
+        </div>
     </@layout.put>
 </@layout.extends>
