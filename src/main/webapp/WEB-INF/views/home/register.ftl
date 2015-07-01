@@ -1,3 +1,5 @@
+<#import "/spring.ftl" as spring />
+
 <@layout.extends name="template.ftl">
     <@layout.put block="content">
 
@@ -34,6 +36,11 @@
                 <tr>
                     <td><input type="text" name="city" class="css-input" placeholder="your city.."/></td>
                 </tr>
+                <tr>
+                    <td>Konto zarządcy?<input type="radio" name="adminAccount"/></td>
+                </tr>
+
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
                 <tr>
                     <td><input type="submit" value="Stwórz" class="btn"/></td>
