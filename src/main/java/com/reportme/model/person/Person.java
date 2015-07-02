@@ -1,5 +1,6 @@
 package com.reportme.model.person;
 
+import com.reportme.model.Group;
 import com.reportme.model.Notification;
 
 import javax.persistence.*;
@@ -11,20 +12,28 @@ import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class Person implements Serializable {
+public class Person implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    protected int id;
+    private int id;
     @Embedded
-    protected PersonData personData;
+    private PersonData personData;
+    @Embedded
+    private Address address;
 
-    @OneToMany
-    protected List<Notification> myNotifications = new ArrayList<>();
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @Enumerated(value = EnumType.STRING)
-    protected Set<Role> roleSet = new HashSet<>();
-    @Embedded
-    protected Address address;
+    private Set<Role> roleSet = new HashSet<>();
+
+    @OneToMany
+    private List<Notification> myNotifications = new ArrayList<>();
+
+    @OneToMany
+    private Set<Group> myGroups = new HashSet<>();
+    @OneToMany
+    private Set<Group> belongToGroups = new HashSet<>();
+
+
 
     public Person() {
     }
