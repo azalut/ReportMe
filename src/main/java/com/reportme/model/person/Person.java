@@ -17,9 +17,6 @@ public abstract class Person implements Serializable {
     protected int id;
     @Embedded
     protected PersonData personData;
-    protected String username;
-    protected String password;
-    protected boolean enabled;
 
     @OneToMany
     protected List<Notification> myNotifications = new ArrayList<>();
@@ -32,11 +29,8 @@ public abstract class Person implements Serializable {
     public Person() {
     }
 
-    public Person(PersonData personData, String username, String password, boolean enabled, Set<Role> roleSet, Address address) {
+    public Person(PersonData personData, Set<Role> roleSet, Address address) {
         this.personData = personData;
-        this.username = username;
-        this.password = password;
-        this.enabled = enabled;
         this.roleSet = roleSet;
         this.address = address;
     }
@@ -55,14 +49,6 @@ public abstract class Person implements Serializable {
 
     public void setPersonData(PersonData personData) {
         this.personData = personData;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
     }
 
     public List<Notification> getMyNotifications() {
@@ -87,21 +73,5 @@ public abstract class Person implements Serializable {
 
     public void setAddress(Address address) {
         this.address = address;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 }

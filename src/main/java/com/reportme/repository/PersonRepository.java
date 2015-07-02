@@ -7,5 +7,5 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import java.util.Optional;
 
 public interface PersonRepository extends JpaRepository<Person, Integer> {
-    Optional<Person> findByUsername(String username) throws UsernameNotFoundException;
+    Optional<Person> findByPersonDataUsername(String username) throws UsernameNotFoundException;
 }

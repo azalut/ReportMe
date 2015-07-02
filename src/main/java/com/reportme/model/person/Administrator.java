@@ -17,8 +17,8 @@ public class Administrator extends Person implements Serializable {
     public Administrator() {
     }
 
-    public Administrator(PersonData personData, String username, String password, boolean enabled, Set<Role> roleSet, Address address) {
-        super(personData, username, password, enabled, roleSet, address);
+    public Administrator(PersonData personData, Set<Role> roleSet, Address address) {
+        super(personData, roleSet, address);
     }
 
     public List<Group> getCreatedGroups() {

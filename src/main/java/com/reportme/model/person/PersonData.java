@@ -8,13 +8,20 @@ public class PersonData {
     private String lastname;
     private String email;
 
+    private String username;
+    private String password;
+    private boolean enabled;
+
     public PersonData() {
     }
 
-    public PersonData(String name, String lastname, String email) {
+    public PersonData(String name, String lastname, String email, String username, String password, boolean enabled) {
         this.name = name;
         this.lastname = lastname;
         this.email = email;
+        this.username = username;
+        this.password = password;
+        this.enabled = enabled;
     }
 
     public String getName() {
@@ -39,5 +46,30 @@ public class PersonData {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }

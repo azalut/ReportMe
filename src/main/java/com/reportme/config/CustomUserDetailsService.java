@@ -22,7 +22,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        Optional<Person> personOptional = personRepository.findByUsername(s);
+        Optional<Person> personOptional = personRepository.findByPersonDataUsername(s);
         if(personOptional.isPresent()){
             Person person = personOptional.get();
             Set<SimpleGrantedAuthority> authoritySet = person.getRoleSet().stream().map(
@@ -30,12 +30,12 @@ public class CustomUserDetailsService implements UserDetailsService {
             ).collect(Collectors.toSet());
 
             return new User(
-                    person.getUsername(),
-                    person.getPassword(),
-                    person.isEnabled(),
-                    person.isEnabled(),
-                    person.isEnabled(),
-                    person.isEnabled(),
+                    person.getPersonData().getUsername(),
+                    person.getPersonData().getPassword(),
+                    person.getPersonData().isEnabled(),
+                    person.getPersonData().isEnabled(),
+                    person.getPersonData().isEnabled(),
+                    person.getPersonData().isEnabled(),
                     authoritySet
             );
         } else {
