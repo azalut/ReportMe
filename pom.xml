@@ -104,6 +104,14 @@
         <artifactId>mysql-connector-java</artifactId>
         <version>5.1.6</version>
       </dependency>
+
+      <!-- javax validation API -->
+      <dependency>
+        <groupId>javax.validation</groupId>
+        <artifactId>validation-api</artifactId>
+        <version>1.1.0.Final</version>
+      </dependency>
+
     </dependencies>
 
 
