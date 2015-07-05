@@ -30,9 +30,8 @@ public class Person implements Serializable {
 
     @OneToMany
     private Set<Group> myGroups = new HashSet<>();
-    @OneToMany
+    @ManyToMany
     private Set<Group> belongToGroups = new HashSet<>();
-
 
 
     public Person() {
@@ -82,5 +81,21 @@ public class Person implements Serializable {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Set<Group> getMyGroups() {
+        return myGroups;
+    }
+
+    public void setMyGroups(Set<Group> myGroups) {
+        this.myGroups = myGroups;
+    }
+
+    public Set<Group> getBelongToGroups() {
+        return belongToGroups;
+    }
+
+    public void setBelongToGroups(Set<Group> belongToGroups) {
+        this.belongToGroups = belongToGroups;
     }
 }

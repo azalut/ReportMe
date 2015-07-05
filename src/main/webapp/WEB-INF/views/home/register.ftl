@@ -3,41 +3,47 @@
 <@layout.extends name="template.ftl">
     <@layout.put block="content">
 
-        <p>Zarejestruj się</p>
-        <form method="post" action="<@spring.url '/createAccount' />">
+        <form action="/register" method="post">
+            <@spring.bind "person"/>
+
+            <#if spring.status.error>
+                <ul>
+                    <#list spring.status.errors.globalErrors as error>
+                        <li>${error.defaultMessage}</li>
+                    </#list>
+                </ul>
+            </#if>
+
             <table>
                 <tr>
-                    <td><input type="text" name="name" class="css-input" placeholder="your name.."/></td>
+                    <td><@spring.formInput "person.personData.name", "placeholder='twoje imie..' class='css-input'"/></td>
                 </tr>
                 <tr>
-                    <td><input type="text" name="lastname" class="css-input" placeholder="your lastname.."/></td>
+                    <td><@spring.formInput "person.personData.lastname", "placeholder='twoje nazwisko..' class='css-input'"/></td>
                 </tr>
                 <tr>
-                    <td><input type="email" name="email" class="css-input" placeholder="your email.."/></td>
-                </tr>
-                <tr>
-                    <td><hr></td>
-                </tr>
-                <tr>
-                    <td><input type="text" name="username" class="css-input" placeholder="your username.."/></td>
-                </tr>
-                <tr>
-                    <td><input type="password" name="password" class="css-input" placeholder="your password.."/></td>
+                    <td><@spring.formInput "person.personData.lastname", "placeholder='twój email..' class='css-input'", "email"/></td>
                 </tr>
                 <tr>
                     <td><hr></td>
                 </tr>
                 <tr>
-                    <td><input type="text" name="street" class="css-input" placeholder="your street.."/></td>
+                    <td><@spring.formInput "person.personData.username", "placeholder='twoja nazwa użytkownika..' class='css-input'"/></td>
                 </tr>
                 <tr>
-                    <td><input type="text" name="postcode" class="css-input" placeholder="your postcode.."/></td>
+                    <td><@spring.formPasswordInput "person.personData.password", "placeholder='twoje hasło..' class='css-input'"/></td>
                 </tr>
                 <tr>
-                    <td><input type="text" name="city" class="css-input" placeholder="your city.."/></td>
+                    <td><hr></td>
                 </tr>
                 <tr>
-                    <td>Konto zarządcy?<input type="radio" name="adminAccount"/></td>
+                    <td><@spring.formInput "person.address.street", "placeholder='twoja ulica..' class='css-input'"/></td>
+                </tr>
+                <tr>
+                    <td><@spring.formInput "person.address.postCode", "placeholder='twój kod pocztowy..' class='css-input'"/></td>
+                </tr>
+                <tr>
+                    <td><@spring.formInput "person.address.city", "placeholder='twoje miasto..' class='css-input'"/></td>
                 </tr>
 
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -47,6 +53,5 @@
                 </tr>
             </table>
         </form>
-
     </@layout.put>
 </@layout.extends>

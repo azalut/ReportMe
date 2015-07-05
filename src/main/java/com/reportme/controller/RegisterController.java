@@ -1,32 +1,27 @@
 package com.reportme.controller;
 
+import com.reportme.model.person.Person;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class RegisterController {
 
-    @RequestMapping(value = "/register")
-    public String register() {
-        return "home/register";
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public ModelAndView register() {
+        ModelAndView modelAndView = new ModelAndView("home/register");
+        modelAndView.addObject("person", new Person());
+        return modelAndView;
     }
 
-    @RequestMapping(value = "/createAccount")
-    public String createAccount(@RequestParam("name") String name,
-                                @RequestParam("lastname") String lastname,
-                                @RequestParam("email") String email,
-                                @RequestParam("username") String username,
-                                @RequestParam("password") String password,
-                                @RequestParam("street") String street,
-                                @RequestParam("postcode") String postcode,
-                                @RequestParam("city") String city,
-                                @RequestParam(value = "adminAccount", defaultValue = "false") boolean adminAccount) {
-        if(adminAccount){
-            //TODO: create admin account
-        }else{
-            //TODO: create occupant account
-        }
-        return "home/home"; //TODO: add proper return page
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public ModelAndView createAccount(@ModelAttribute("person") Person person) {
+        //TODO: create account
+        ModelAndView modelAndView = new ModelAndView("person/account");
+        modelAndView.addObject("person", person);
+        return modelAndView;
     }
 }
