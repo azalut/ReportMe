@@ -2,6 +2,7 @@
 
 <@layout.extends name="template.ftl">
     <@layout.put block="content">
+    <div class="center-content">
         <p><h2>Tworzenie nowego konta</h2></p>
         <p>Wypełnij formularz poniżej</p>
 
@@ -53,5 +54,6 @@
                 </tr>
             </table>
         </form>
+    </div>
     </@layout.put>
 </@layout.extends>
