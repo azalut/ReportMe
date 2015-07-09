@@ -2,6 +2,9 @@
 
 <@layout.extends name="template.ftl">
     <@layout.put block="content">
+        <p><h2>Tworzenie nowego konta</h2></p>
+        <p>Wypełnij formularz poniżej</p>
+
         <form action="<@spring.url '/register'/>" method="post">
             <table>
                 <tr>

@@ -1,4 +1,4 @@
-package com.reportme.config;
+package com.reportme.service;
 
 import com.reportme.model.person.Person;
 import com.reportme.repository.PersonRepository;

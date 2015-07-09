@@ -22,6 +22,7 @@ public class PersonData {
     @Size(min = 6, max = 40)
     private String username;
     @NotNull
+    @Size(min = 6, max = 40)
     private String password;
     @NotNull
     private boolean enabled;

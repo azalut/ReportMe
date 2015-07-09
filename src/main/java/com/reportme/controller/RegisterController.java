@@ -6,29 +6,26 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 
 @Controller
 public class RegisterController {
+    @ModelAttribute("person")
+    public Person person() {
+        return new Person();
+    }
+
     @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public ModelAndView register() {
-        ModelAndView modelAndView = new ModelAndView("home/register");
-        modelAndView.addObject("person", new Person());
-        return modelAndView;
+    public String register() {
+        return "person/register";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ModelAndView createAccount(@Valid @ModelAttribute("person") Person person, BindingResult bindingResult) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("person", person);
+    public String createAccount(@Valid @ModelAttribute("person") Person person, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            bindingResult.getAllErrors().stream().forEach(System.out::println);
-            modelAndView.setViewName("home/register");
-            return modelAndView;
+            return "person/register";
         }
-        modelAndView.setViewName("person/account");
-        return modelAndView;
+        return "person/account";
     }
 }
