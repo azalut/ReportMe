@@ -1,4 +1,5 @@
 <#import "spring.ftl" as spring/>
+<#assign security=JspTaglibs["http://www.springframework.org/security/tags"] />
 
 <html>
 <head>
@@ -25,7 +26,16 @@
                     </ul>
                 </li>
                 <li><a href="#">Kontakt</a></li>
-                <li><a href="<@spring.url '/login'/>">Zaloguj</a></li>
+
+                <@security.authorize access="!isAuthenticated()">
+                    <li><a href="<@spring.url '/login'/>">Zaloguj</a></li>
+                </@security.authorize>
+                <@security.authorize access="isAuthenticated()">
+                    <li><a href="<@spring.url '/logout'/>">Wyloguj</a></li>
+                </@security.authorize>
+
+                <@layout.block name="menu-list">
+                </@layout.block>
                 <li><a href="<@spring.url '/register'/>">Rejestracja</a></li>
             </ul>
         </nav>
