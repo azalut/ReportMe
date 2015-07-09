@@ -1,15 +1,29 @@
 package com.reportme.model.person;
 
+import org.hibernate.validator.constraints.Email;
+
 import javax.persistence.Embeddable;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Embeddable
 public class PersonData {
+    @NotNull
+    @Size(min = 2, max = 40)
     private String name;
+    @NotNull
+    @Size(min = 2, max = 40)
     private String lastname;
+    @NotNull
+    @Email
     private String email;
 
+    @NotNull
+    @Size(min = 6, max = 40)
     private String username;
+    @NotNull
     private String password;
+    @NotNull
     private boolean enabled;
 
     public PersonData() {

@@ -4,6 +4,7 @@ import com.reportme.model.Group;
 import com.reportme.model.Notification;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -16,8 +17,10 @@ public class Person implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
+    @Valid
     @Embedded
     private PersonData personData;
+    @Valid
     @Embedded
     private Address address;
 
