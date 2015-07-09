@@ -24,7 +24,6 @@
                         <li><a href="#">Opcja 4</a></li>
                     </ul>
                 </li>
-                <li><a href="#">Projekty</a></li>
                 <li><a href="#">Kontakt</a></li>
                 <li><a href="<@spring.url '/login'/>">Zaloguj</a></li>
                 <li><a href="<@spring.url '/register'/>">Rejestracja</a></li>

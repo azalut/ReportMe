@@ -8,11 +8,11 @@ public class LoginHomeController {
 
     @RequestMapping(value = {"/", "/home"})
     public String home() {
-        return "home/home";
+        return "loginhome/home";
     }
 
     @RequestMapping(value = "/login")
     public String login() {
-        return "home/login";
+        return "loginhome/login";
     }
 }

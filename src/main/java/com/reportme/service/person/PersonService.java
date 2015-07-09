@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @Transactional
 public class PersonService {
@@ -15,4 +17,9 @@ public class PersonService {
     public Person create(Person person) {
         return personRepository.save(person);
     }
+
+    public Optional<Person> findByUsername(final String username) {
+        return personRepository.findByPersonDataUsername(username);
+    }
+
 }

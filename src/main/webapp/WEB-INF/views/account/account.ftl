@@ -3,6 +3,6 @@
 <@layout.extends name="template.ftl">
     <@layout.put block="content">
         <@spring.bind "person"/>
-        Twój login to: ${person.personData.name!"BRAK!"}
+        Twoje imie to: ${person.personData.name!"BRAK!"} ${person.personData.lastname!"BRAK!"}
     </@layout.put>
 </@layout.extends>

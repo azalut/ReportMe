@@ -10,7 +10,7 @@
        <import resource="dispatcher-servlet.xml" />
 
        <security:http auto-config="true">
-           <security:intercept-url pattern="/pro" access="hasRole('ROLE_USER')" />
+           <security:intercept-url pattern="/account" access="hasRole('ROLE_USER')" />
            <security:logout logout-url="/logout" logout-success-url="/" />
            <security:form-login login-page="/login" />
            <security:csrf/>
