@@ -9,7 +9,7 @@ import java.lang.annotation.*;
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface UsernameAvailable {
-    String message() default "Username is not available, someone uses it. Please choose another one";
+    String message() default "This username is not available";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

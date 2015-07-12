@@ -17,7 +17,7 @@ public class UsernameAvailableValidator implements ConstraintValidator<UsernameA
 
     @Override
     public boolean isValid(String username, ConstraintValidatorContext constraintValidatorContext) {
-        personService.doNothing();
-        return true;
+        personService.findByUsername(username);
+        return username.contains("a");
     }
 }

@@ -29,9 +29,4 @@ public class PersonService {
     public Optional<Person> findByUsername(final String username) {
         return personRepository.findByPersonDataUsername(username);
     }
-
-    public void doNothing(){
-        System.out.println("O AM DOING NOTHGN ---------------------------------------");
-    }
-
 }
