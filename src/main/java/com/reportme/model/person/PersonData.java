@@ -1,5 +1,6 @@
 package com.reportme.model.person;
 
+import com.reportme.model.validation.UsernameAvailable;
 import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.Embeddable;
@@ -20,6 +21,7 @@ public class PersonData {
 
     @NotNull
     @Size(min = 6, max = 40)
+    @UsernameAvailable
     private String username;
     @NotNull
     @Size(min = 6, max = 40)
