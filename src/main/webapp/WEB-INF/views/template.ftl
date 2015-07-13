@@ -27,16 +27,16 @@
                 </li>
                 <li><a href="#">Kontakt</a></li>
 
-                <@security.authorize access="!isAuthenticated()">
+                <@security.authorize access="!hasRole('ROLE_OCCUPANT')">
                     <li><a href="<@spring.url '/login'/>">Zaloguj</a></li>
+                    <li><a href="<@spring.url '/register'/>">Rejestracja</a></li>
                 </@security.authorize>
-                <@security.authorize access="isAuthenticated()">
+                <@security.authorize access="hasRole('ROLE_OCCUPANT')">
                     <li><a href="<@spring.url '/logout'/>">Wyloguj</a></li>
                 </@security.authorize>
 
                 <@layout.block name="menu-list">
                 </@layout.block>
-                <li><a href="<@spring.url '/register'/>">Rejestracja</a></li>
             </ul>
         </nav>
     </div>
