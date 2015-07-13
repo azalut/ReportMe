@@ -29,4 +29,8 @@ public class PersonService {
     public Optional<Person> findByUsername(final String username) {
         return personRepository.findByPersonDataUsername(username);
     }
+
+    public boolean containsA(String string) {
+        return string.contains("a");
+    }
 }
