@@ -16,8 +16,12 @@
            <security:csrf/>
        </security:http>
 
+        <bean name="MD5passwordEncoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder"/>
+
        <security:authentication-manager>
-           <security:authentication-provider user-service-ref="customUserDetailsService" />
+           <security:authentication-provider user-service-ref="customUserDetailsService">
+               <security:password-encoder ref="MD5passwordEncoder"/>
+           </security:authentication-provider>
 
            <security:authentication-provider>
                <security:user-service>

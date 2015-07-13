@@ -20,6 +20,6 @@ public class UsernameAvailableValidator implements ConstraintValidator<UsernameA
         if(personService == null) {
             return true;
         }
-        return personService.containsA(username);
+        return !personService.findByUsername(username).isPresent();
     }
 }

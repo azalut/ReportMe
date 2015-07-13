@@ -6,6 +6,7 @@ import com.reportme.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.DigestUtils;
 
 import java.util.Optional;
 
@@ -17,6 +18,8 @@ public class PersonService {
 
     public Person create(Person person) throws UsernameNotAvailableException {
         if(isUsernameAvailable(person.getPersonData().getUsername())){
+            String md5password = DigestUtils.md5DigestAsHex(person.getPersonData().getPassword().getBytes());
+            person.getPersonData().setPassword(md5password);
             return personRepository.save(person);
         }
         throw new UsernameNotAvailableException("Username is not available. Choose another one.");
@@ -28,9 +31,5 @@ public class PersonService {
 
     public Optional<Person> findByUsername(final String username) {
         return personRepository.findByPersonDataUsername(username);
-    }
-
-    public boolean containsA(String string) {
-        return string.contains("a");
     }
 }
