@@ -16,6 +16,8 @@
 
     <jpa:repositories base-package="com.reportme.repository"/>
 
+    <context:property-placeholder location="classpath:userdata.properties"/>
+
     <!-- Custom login error messages -->
     <bean name="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basenames">
@@ -81,6 +83,21 @@
 
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
         <property name="validationMessageSource" ref="messageSource"/>
+    </bean>
+
+    <!-- Email Sender -->
+    <bean id="emailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.gmail.com"/>
+        <property name="port" value="587"/>
+        <property name="username" value="${reportmeMail}"/>
+        <property name="password" value="${reportmePassword}"/>
+
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+            </props>
+        </property>
     </bean>
 
 </beans>
