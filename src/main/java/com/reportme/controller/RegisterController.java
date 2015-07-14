@@ -1,7 +1,8 @@
 package com.reportme.controller;
 
-import com.reportme.exception.person.UsernameNotAvailableException;
+import com.reportme.exception.person.UsernameException;
 import com.reportme.model.person.Person;
+import com.reportme.service.ConfirmationEmailSenderService;
 import com.reportme.service.person.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -18,6 +19,8 @@ public class RegisterController {
     @Autowired
     @Qualifier("personService")
     private PersonService personService;
+    @Autowired
+    private ConfirmationEmailSenderService confirmationEmailSenderService;
 
     @ModelAttribute("person")
     public Person person() {
@@ -30,11 +33,12 @@ public class RegisterController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String createAccount(@Valid @ModelAttribute("person") Person person, BindingResult bindingResult) throws UsernameNotAvailableException {
+    public String createAccount(@Valid @ModelAttribute("person") Person person, BindingResult bindingResult) throws UsernameException {
         if (bindingResult.hasErrors()) {
             return "register/register";
         }else{
             personService.create(person);
+            confirmationEmailSenderService.sendConfirmationLinkEmail(person);
             return "loginhome/login";
         }
     }

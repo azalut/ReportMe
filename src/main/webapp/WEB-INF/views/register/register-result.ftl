@@ -2,6 +2,10 @@
 
 <@layout.extends name="template.ftl">
     <@layout.put block="content">
-        <h1>Wystąpił błąd podczas rejestracji</h1>
+        <#if exception??>
+            <p>${exception.message!""}</p>
+        </#if>
+        <p>${confirmationMessage!""}</p>
+
     </@layout.put>
 </@layout.extends>
