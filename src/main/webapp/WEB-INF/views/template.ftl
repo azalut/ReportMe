@@ -32,7 +32,10 @@
                     <li><a href="<@spring.url '/register'/>">Rejestracja</a></li>
                 </@security.authorize>
                 <@security.authorize access="hasRole('ROLE_OCCUPANT')">
-                    <li><a href="<@spring.url '/logout'/>">Wyloguj</a></li>
+                    <li><form method="post" action="/logout">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                        <input type="submit" value="Wyloguj" class="logout-button"/>
+                    </form></li>
                 </@security.authorize>
 
                 <@layout.block name="menu-list">
