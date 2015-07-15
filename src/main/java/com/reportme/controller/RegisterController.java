@@ -8,9 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 
@@ -41,5 +40,12 @@ public class RegisterController {
             confirmationEmailSenderService.sendConfirmationLinkEmail(person);
             return "loginhome/login";
         }
+    }
+
+    @RequestMapping(value = "/confirm/{confirmationToken}")
+    public ModelAndView confirmAccount(@PathVariable("confirmationToken") String confirmationToken,
+                                       @RequestParam("username") String username) throws UsernameException {
+        personService.enableUser(confirmationToken, username);
+        return new ModelAndView("register/register-result", "confirmationMessage", "Twoje konto zostało aktywowane!");
     }
 }
