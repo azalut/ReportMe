@@ -1,5 +1,6 @@
 package com.reportme.controlleradvice;
 
+import com.reportme.exception.person.RegisterException;
 import com.reportme.exception.person.UsernameException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 @ControllerAdvice
 public class PersonControllerAdvice {
 
-    @ExceptionHandler({UsernameException.class})
+    @ExceptionHandler({UsernameException.class, RegisterException.class})
     public ModelAndView usernameException(HttpServletRequest request, Exception exception) {
         ModelAndView modelAndView = new ModelAndView("register/register-result");
         modelAndView.addObject("request", request);

@@ -1,5 +1,6 @@
 package com.reportme.controller;
 
+import com.reportme.exception.person.RegisterException;
 import com.reportme.exception.person.UsernameException;
 import com.reportme.model.person.Person;
 import com.reportme.service.ConfirmationEmailSenderService;
@@ -32,12 +33,15 @@ public class RegisterController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String createAccount(@Valid @ModelAttribute("person") Person person, BindingResult bindingResult) throws UsernameException {
+    public String createAccount(@Valid @ModelAttribute("person") Person person, BindingResult bindingResult) throws RegisterException {
         if (bindingResult.hasErrors()) {
             return "register/register";
         }else{
-            personService.create(person);
-            confirmationEmailSenderService.sendConfirmationLinkEmail(person);
+            if(personService.create(person).isPresent()){
+                confirmationEmailSenderService.sendConfirmationLinkEmail(person);
+            }else{
+                throw new RegisterException("Person instance was not created properly");
+            }
             return "loginhome/login";
         }
     }

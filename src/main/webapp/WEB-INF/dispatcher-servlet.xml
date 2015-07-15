@@ -16,7 +16,7 @@
 
     <jpa:repositories base-package="com.reportme.repository"/>
 
-    <context:property-placeholder location="classpath:userdata.properties"/>
+    <context:property-placeholder location="classpath:userdata.properties" file-encoding="UTF-8"/>
 
     <!-- Custom login error messages -->
     <bean name="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">

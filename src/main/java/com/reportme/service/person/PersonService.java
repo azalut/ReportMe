@@ -20,15 +20,15 @@ public class PersonService {
     @Autowired
     private ConfirmationEmailSenderService confirmationEmailSenderService;
 
-    public Person create(Person person) throws UsernameException {
+    public Optional<Person> create(Person person) {
         if(isUsernameAvailable(person.getPersonData().getUsername())){
             String md5password = DigestUtils.md5DigestAsHex(person.getPersonData().getPassword().getBytes());
             person.getPersonData().setPassword(md5password);
 
             person.getRoleSet().add(Role.ROLE_OCCUPANT);
-            return personRepository.save(person);
+            return Optional.of(personRepository.save(person));
         }
-        throw new UsernameException("Username is not available. Choose another one.");
+        return Optional.empty();
     }
 
     private boolean isUsernameAvailable(final String username) {
