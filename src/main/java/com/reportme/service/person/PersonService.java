@@ -1,5 +1,6 @@
 package com.reportme.service.person;
 
+import com.reportme.exception.person.InvalidConfirmationTokenException;
 import com.reportme.exception.person.UsernameException;
 import com.reportme.model.person.Person;
 import com.reportme.model.person.Role;
@@ -39,13 +40,15 @@ public class PersonService {
         return personRepository.findByPersonDataUsername(username);
     }
 
-    public void enableUser(String confirmationToken, String username) throws UsernameException {
+    public void enableUser(String confirmationToken, String username) throws UsernameException, InvalidConfirmationTokenException {
         Optional<Person> personOptional = findByUsername(username);
         if(personOptional.isPresent()){
             Person person = personOptional.get();
             String properToken = confirmationEmailSenderService.generateConfirmationToken(person);
             if(properToken.equals(confirmationToken)){
                 person.getPersonData().setEnabled(true);
+            }else{
+                throw new InvalidConfirmationTokenException("Confirmation token was invalid");
             }
         }else{
             throw new UsernameException("Username was not found.");

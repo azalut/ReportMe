@@ -5,7 +5,5 @@
         <#if exception??>
             <p>${exception.message!""}</p>
         </#if>
-        <p>${confirmationMessage!""}</p>
-
     </@layout.put>
 </@layout.extends>

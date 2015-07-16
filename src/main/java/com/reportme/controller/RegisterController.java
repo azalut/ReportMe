@@ -1,5 +1,6 @@
 package com.reportme.controller;
 
+import com.reportme.exception.person.InvalidConfirmationTokenException;
 import com.reportme.exception.person.RegisterException;
 import com.reportme.exception.person.UsernameException;
 import com.reportme.model.person.Person;
@@ -48,8 +49,8 @@ public class RegisterController {
 
     @RequestMapping(value = "/confirm/{confirmationToken}")
     public ModelAndView confirmAccount(@PathVariable("confirmationToken") String confirmationToken,
-                                       @RequestParam("username") String username) throws UsernameException {
+                                       @RequestParam("username") String username) throws UsernameException, InvalidConfirmationTokenException {
         personService.enableUser(confirmationToken, username);
-        return new ModelAndView("register/register-result", "confirmationMessage", "Twoje konto zostało aktywowane!");
+        return new ModelAndView("register/confirmation-result", "isConfirmationSucceed", true);
     }
 }
