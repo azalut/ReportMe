@@ -43,8 +43,8 @@ public class PersonService {
 
     public void enableUser(String confirmationToken, String username) throws UsernameException, ConfirmationTokenException {
         if(confirmationToken.equals(confirmTokenPersonService.findTokenByUsername(username))) {
-            findByUsername(username).get().getPersonData().setEnabled(true);
-            confirmTokenPersonService.deleteRowByToken(confirmationToken);
+            findByUsername(username).get().getPersonData().setEnabled(true); //sets user account to ENABLED
+            confirmTokenPersonService.deleteRowByToken(confirmationToken); //removes token from confirmtokenperson table
         }else{
             throw new ConfirmationTokenException("Confirmation token or username was invalid");
         }
