@@ -37,7 +37,7 @@ public class ConfirmationEmailSenderService {
         simpleMailMessage.setFrom(reportmeMail);
         simpleMailMessage.setTo(person.getPersonData().getEmail());
         simpleMailMessage.setSubject(defaultEmailHeader);
-        simpleMailMessage.setText(defaultEmailBody
+        simpleMailMessage.setText(defaultEmailBody + "\r\n\r\n"
                 + defaultConfirmationLink
                 + confirmTokenPersonService.findTokenByUsername(person.getPersonData().getUsername())
                 + "?username=" + person.getPersonData().getUsername()
