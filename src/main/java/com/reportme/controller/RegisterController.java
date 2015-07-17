@@ -1,6 +1,6 @@
 package com.reportme.controller;
 
-import com.reportme.exception.person.InvalidConfirmationTokenException;
+import com.reportme.exception.person.ConfirmationTokenException;
 import com.reportme.exception.person.RegisterException;
 import com.reportme.exception.person.UsernameException;
 import com.reportme.model.person.Person;
@@ -34,12 +34,12 @@ public class RegisterController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String createAccount(@Valid @ModelAttribute("person") Person person, BindingResult bindingResult) throws RegisterException {
+    public String createAccount(@Valid @ModelAttribute("person") Person person, BindingResult bindingResult) throws RegisterException, UsernameException, ConfirmationTokenException {
         if (bindingResult.hasErrors()) {
             return "register/register";
         }else{
             if(personService.create(person).isPresent()){
-                confirmationEmailSenderService.sendConfirmationLinkEmail(person);
+                confirmationEmailSenderService.sendConfirmationEmail(person);
             }else{
                 throw new RegisterException("Person instance was not created properly");
             }
@@ -49,8 +49,9 @@ public class RegisterController {
 
     @RequestMapping(value = "/confirm/{confirmationToken}")
     public ModelAndView confirmAccount(@PathVariable("confirmationToken") String confirmationToken,
-                                       @RequestParam("username") String username) throws UsernameException, InvalidConfirmationTokenException {
+                                       @RequestParam("username") String username) throws UsernameException, ConfirmationTokenException {
         personService.enableUser(confirmationToken, username);
+
         return new ModelAndView("register/confirmation-result", "isConfirmationSucceed", true);
     }
 }

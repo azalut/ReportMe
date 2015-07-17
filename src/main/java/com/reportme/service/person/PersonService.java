@@ -1,11 +1,10 @@
 package com.reportme.service.person;
 
-import com.reportme.exception.person.InvalidConfirmationTokenException;
+import com.reportme.exception.person.ConfirmationTokenException;
 import com.reportme.exception.person.UsernameException;
 import com.reportme.model.person.Person;
 import com.reportme.model.person.Role;
 import com.reportme.repository.PersonRepository;
-import com.reportme.service.ConfirmationEmailSenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +18,7 @@ public class PersonService {
     @Autowired
     private PersonRepository personRepository;
     @Autowired
-    private ConfirmationEmailSenderService confirmationEmailSenderService;
+    private ConfirmTokenPersonService confirmTokenPersonService;
 
     public Optional<Person> create(Person person) {
         if(isUsernameAvailable(person.getPersonData().getUsername())){
@@ -27,6 +26,8 @@ public class PersonService {
             person.getPersonData().setPassword(md5password);
 
             person.getRoleSet().add(Role.ROLE_OCCUPANT);
+            // persisting randomly generated token for newly created user
+            confirmTokenPersonService.createToken(person);
             return Optional.of(personRepository.save(person));
         }
         return Optional.empty();
@@ -40,18 +41,12 @@ public class PersonService {
         return personRepository.findByPersonDataUsername(username);
     }
 
-    public void enableUser(String confirmationToken, String username) throws UsernameException, InvalidConfirmationTokenException {
-        Optional<Person> personOptional = findByUsername(username);
-        if(personOptional.isPresent()){
-            Person person = personOptional.get();
-            String properToken = confirmationEmailSenderService.generateConfirmationToken(person);
-            if(properToken.equals(confirmationToken)){
-                person.getPersonData().setEnabled(true);
-            }else{
-                throw new InvalidConfirmationTokenException("Confirmation token was invalid");
-            }
+    public void enableUser(String confirmationToken, String username) throws UsernameException, ConfirmationTokenException {
+        if(confirmationToken.equals(confirmTokenPersonService.findTokenByUsername(username))) {
+            findByUsername(username).get().getPersonData().setEnabled(true);
+            confirmTokenPersonService.deleteRowByToken(confirmationToken);
         }else{
-            throw new UsernameException("Username was not found.");
+            throw new ConfirmationTokenException("Confirmation token or username was invalid");
         }
     }
 }
