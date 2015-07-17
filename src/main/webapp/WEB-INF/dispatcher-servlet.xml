@@ -91,6 +91,7 @@
         <property name="port" value="587"/>
         <property name="username" value="${reportmeMail}"/>
         <property name="password" value="${reportmePassword}"/>
+        <property name="defaultEncoding" value="UTF-8"/>
 
         <property name="javaMailProperties">
             <props>
