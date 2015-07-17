@@ -43,7 +43,7 @@ public class RegisterController {
             }else{
                 throw new RegisterException("Person instance was not created properly");
             }
-            return "loginhome/login";
+            return "redirect:/login?registerSuccess=true";
         }
     }
 

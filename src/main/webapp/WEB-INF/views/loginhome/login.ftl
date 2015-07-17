@@ -4,6 +4,10 @@
     <@layout.put block="content">
     <div class="center-content">
         <p>Zaloguj się</p>
+        <#-- after redirect from /register Controller -->
+        <#if RequestParameters.registerSuccess??>
+            Rejestracja przebiegła pomyślnie, aktywuj konto poprzez link wysłany na email i zaloguj się
+        </#if>
 
         <#if SPRING_SECURITY_LAST_EXCEPTION?has_content>
             <p>${SPRING_SECURITY_LAST_EXCEPTION.message}</p>
