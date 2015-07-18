@@ -6,6 +6,7 @@ import com.reportme.model.person.Person;
 import com.reportme.model.person.Role;
 import com.reportme.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
@@ -48,5 +49,9 @@ public class PersonService {
         }else{
             throw new ConfirmationTokenException("Confirmation token or username was invalid");
         }
+    }
+
+    public Person getAuthenticatedPerson() {
+        return personRepository.findByPersonDataUsername(SecurityContextHolder.getContext().getAuthentication().getName()).get();
     }
 }
