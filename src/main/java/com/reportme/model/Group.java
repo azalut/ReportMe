@@ -1,6 +1,8 @@
 package com.reportme.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +13,10 @@ public class Group implements Serializable {
     @Id
     @GeneratedValue
     private int id;
+    @NotNull
+    @Size(min = 6, max = 40)
     private String name;
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Notification> notificationList = new ArrayList<>();
 
     public Group() {

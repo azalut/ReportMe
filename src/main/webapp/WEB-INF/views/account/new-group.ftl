@@ -3,9 +3,9 @@
 <@layout.extends name="template.ftl">
     <@layout.put block="content">
         <@spring.bind "newGroup"/>
-        <p>Podaj nazwę nowej grupy</p>
-
         <div class="center-content">
+            <p>Podaj nazwę nowej grupy</p>
+
             <form action="<@spring.url '/account/newgroup'/>" method="post">
                 <table>
                     <tr>

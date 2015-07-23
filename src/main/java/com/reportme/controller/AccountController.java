@@ -46,12 +46,12 @@ public class AccountController {
     }
 
     @RequestMapping(value = "/newgroup", method = RequestMethod.POST)
-    public String createNewGroup(@Valid @ModelAttribute("newGroup") Group group, BindingResult bindingResult) {
+    public ModelAndView createNewGroup(@Valid @ModelAttribute("newGroup") Group group, BindingResult bindingResult) {
         if(bindingResult.hasErrors()){
-
+            return new ModelAndView("account/new-group");
         }else{
-            System.err.println("----------------------------------------------------------" + group.getName());
+            // save the group entity
+            return new ModelAndView("redirect:/account/mygroups");
         }
-        return null;
     }
 }
