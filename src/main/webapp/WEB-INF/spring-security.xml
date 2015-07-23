@@ -12,7 +12,7 @@
        <security:http auto-config="false" >
            <security:intercept-url pattern="/account*" access="hasRole('ROLE_OCCUPANT')" />
            <security:logout />
-           <security:form-login login-page="/login" default-target-url="/"/>
+           <security:form-login login-page="/login" default-target-url="/account/mygroups"/>
            <security:csrf/>
        </security:http>
 

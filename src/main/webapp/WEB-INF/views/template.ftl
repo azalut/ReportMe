@@ -36,7 +36,7 @@
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                         <input type="submit" value="Wyloguj" class="logout-button"/>
                     </form></li>
-                    <li><a href="<@spring.url '/account'/>">Moje konto</a></li>
+                    <li><a href="<@spring.url '/account/mygroups'/>">Moje konto</a></li>
                 </@security.authorize>
 
                 <@layout.block name="menu-list">

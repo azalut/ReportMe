@@ -31,9 +31,9 @@ public class Person implements Serializable {
     @OneToMany
     private List<Notification> myNotifications = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private Set<Group> myGroups = new HashSet<>();
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Group> belongToGroups = new HashSet<>();
 
 
