@@ -3,12 +3,12 @@
 <@layout.extends name="account/account-template.ftl">
     <@layout.put block="account-content">
         <#if personObj.belongToGroups?has_content>
-            Oto twoje osiedla:
+            <p class="group-header">Moje osiedla</p>
             <#list personObj.belongToGroups as group>
                 <p>${group.name}</p>
             </#list>
         <#else>
-            <p>Nie zostałeś jeszcze przypisany do żadnego osiedla</p>
+            <p class="group-header">Nie zostałeś jeszcze przypisany do żadnego osiedla</p>
         </#if>
     </@layout.put>
 </@layout.extends>

@@ -15,16 +15,7 @@
         <nav class="menu">
             <ul class="clearfix">
                 <li><a href="<@spring.url '/'/>">Strona główna</a></li>
-                <li>
-                    <a href="#">Oferta</a>
-
-                    <ul class="sub-menu">
-                        <li><a href="#">Opcja 1</a></li>
-                        <li><a href="#">Opcja 2</a></li>
-                        <li><a href="#">Opcja 3</a></li>
-                        <li><a href="#">Opcja 4</a></li>
-                    </ul>
-                </li>
+                <li><a href="#">Oferta</a></li>
                 <li><a href="#">Kontakt</a></li>
 
                 <@security.authorize access="!hasRole('ROLE_OCCUPANT')">

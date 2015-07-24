@@ -1,12 +1,14 @@
 package com.reportme.controller;
 
 import com.reportme.model.Group;
+import com.reportme.service.group.GroupService;
 import com.reportme.service.person.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,6 +21,8 @@ import java.util.NoSuchElementException;
 public class AccountController {
     @Autowired
     private PersonService personService;
+    @Autowired
+    private GroupService groupService;
 
     @RequestMapping(value = "/mygroups")
     public ModelAndView myGroups() {
@@ -50,8 +54,13 @@ public class AccountController {
         if(bindingResult.hasErrors()){
             return new ModelAndView("account/new-group");
         }else{
-            // save the group entity
+            groupService.create(group);
             return new ModelAndView("redirect:/account/mygroups");
         }
+    }
+
+    @RequestMapping(value = "/group/{groupName}")
+    public ModelAndView selectedGroup(@PathVariable("groupName") String groupName) {
+        return new ModelAndView("account/group", "group", groupService.findByGroupName(groupName).get());
     }
 }

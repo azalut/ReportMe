@@ -16,14 +16,14 @@ public class Group implements Serializable {
     @NotNull
     @Size(min = 6, max = 40)
     private String name;
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private List<Notification> notificationList = new ArrayList<>();
 
     public Group() {
     }
 
-    public Group(String name) {
-        this.name = name;
+    public Group(String groupName) {
+        this.name = groupName;
     }
 
     public int getId() {

@@ -31,9 +31,11 @@ public class Person implements Serializable {
     @OneToMany
     private List<Notification> myNotifications = new ArrayList<>();
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "Person_myGroups")
     private Set<Group> myGroups = new HashSet<>();
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "Person_belongToGroups")
     private Set<Group> belongToGroups = new HashSet<>();
 
 

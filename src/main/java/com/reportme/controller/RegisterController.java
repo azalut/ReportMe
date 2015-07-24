@@ -4,7 +4,7 @@ import com.reportme.exception.person.ConfirmationTokenException;
 import com.reportme.exception.person.RegisterException;
 import com.reportme.exception.person.UsernameException;
 import com.reportme.model.person.Person;
-import com.reportme.service.ConfirmationEmailSenderService;
+import com.reportme.service.person.ConfirmationEmailSenderService;
 import com.reportme.service.person.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

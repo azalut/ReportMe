@@ -22,11 +22,5 @@
            <security:authentication-provider user-service-ref="customUserDetailsService">
                <security:password-encoder ref="MD5passwordEncoder"/>
            </security:authentication-provider>
-
-           <security:authentication-provider>
-               <security:user-service>
-                   <security:user name="maciek" password="maciek" authorities="ROLE_ADMIN, ROLE_OCCUPANT"/>
-               </security:user-service>
-           </security:authentication-provider>
        </security:authentication-manager>
 </beans>

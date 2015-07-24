@@ -1,4 +1,4 @@
-package com.reportme.service;
+package com.reportme.service.person;
 
 import com.reportme.exception.person.ConfirmationTokenException;
 import com.reportme.exception.person.UsernameException;
