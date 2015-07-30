@@ -12,6 +12,6 @@
         </#if>
 
         <hr>
-        <a href="<@spring.url '/account/newgroup'/>" class="account-menu-option">Dodaj nowe osiedle</a>
+        <a href="<@spring.url '/account/newgroup'/>" class="account-button">Dodaj nowe osiedle</a>
     </@layout.put>
 </@layout.extends>

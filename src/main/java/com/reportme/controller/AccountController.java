@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -65,8 +62,16 @@ public class AccountController {
     }
 
     @RequestMapping(value = "/delete/{groupName}")
-    public String deleteGroup(@PathVariable("groupName") String groupName) {
-        groupService.deleteByName(groupName);
-        return "redirect:/account/mygroups";
+    public ModelAndView deleteGroup(@PathVariable("groupName") String groupName,
+                              @RequestParam(value = "confirmed", required = false, defaultValue = "") String confirmed) {
+        switch (confirmed) {
+            case "yes":
+                groupService.deleteByName(groupName);
+                return new ModelAndView("redirect:/account/mygroups");
+            case "no":
+                return new ModelAndView("redirect:/account/mygroups");
+            default:
+                return new ModelAndView("account/group-delete-confirm", "groupName", groupName);
+        }
     }
 }
