@@ -65,10 +65,10 @@ public class AccountController {
     public ModelAndView deleteGroup(@PathVariable("groupName") String groupName,
                               @RequestParam(value = "confirmed", required = false, defaultValue = "") String confirmed) {
         switch (confirmed) {
-            case "yes":
+            case "true":
                 groupService.deleteByName(groupName);
                 return new ModelAndView("redirect:/account/mygroups");
-            case "no":
+            case "false":
                 return new ModelAndView("redirect:/account/mygroups");
             default:
                 return new ModelAndView("account/group-delete-confirm", "groupName", groupName);
