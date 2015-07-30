@@ -5,7 +5,7 @@
 
         <div class="account-wrapper">
             <div class="account-left-side">
-                <a href="<@spring.url '/account/mygroups'/>" class="account-menu-option">Moje osiedla <span class="admin-style">admin</span></a>
+                <a href="<@spring.url '/account/mygroups'/>" class="account-menu-option">Moje osiedla <span class="grey-bold">admin</span></a>
                 <a href="<@spring.url '/account/belongtogroups'/>" class="account-menu-option">Moje osiedla</a>
             </div>
 

@@ -39,4 +39,15 @@ public class GroupService {
         if (group.isPresent()) return group;
         else return Optional.empty();
     }
+
+    public void deleteByName(final String groupName) {
+        Optional<Group> groupOptional = groupRepository.findByName(groupName);
+        if(groupOptional.isPresent()){
+            System.err.println("-------------- groupa znaleziona");
+            personService.getAuthenticatedPerson().getMyGroups().remove(groupOptional.get());
+            groupRepository.delete(groupOptional.get());
+        }else{
+            System.err.println("-------------- groupa NIEE znaleziona");
+        }
+    }
 }

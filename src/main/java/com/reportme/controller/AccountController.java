@@ -63,4 +63,11 @@ public class AccountController {
     public ModelAndView selectedGroup(@PathVariable("groupName") String groupName) {
         return new ModelAndView("account/group", "group", groupService.findByGroupName(groupName).get());
     }
+
+    @RequestMapping(value = "/delete/{groupName}")
+    public String deleteGroup(@PathVariable("groupName") String groupName) {
+        System.out.println("WLASNIE USUWAM GRUPE " + groupName);
+        groupService.deleteByName(groupName);
+        return "redirect:/account/mygroups";
+    }
 }

@@ -2,9 +2,9 @@
 
 <@layout.extends name="account/account-template.ftl">
     <@layout.put block="account-content">
-        <#if personObj.myGroups?has_content>
-            <p class="group-header">Moje osiedla <span class="admin-style">administrator</span></p>
-            <#list personObj.myGroups as group>
+        <#if personObj.myGroups??>
+            <p class="group-header">Moje osiedla <span class="grey-bold">administrator</span></p>
+            <#list personObj.myGroups?sort_by("name") as group>
                 <a href="/account/group/${group.name}" class="group-option">${group.name}</a>
             </#list>
         <#else>
@@ -12,6 +12,6 @@
         </#if>
 
         <hr>
-        <a href="<@spring.url '/account/newgroup'/>" class="account-menu-option">Stwórz</a>
+        <a href="<@spring.url '/account/newgroup'/>" class="account-menu-option">Dodaj nowe osiedle</a>
     </@layout.put>
 </@layout.extends>
