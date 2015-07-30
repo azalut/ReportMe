@@ -1,5 +1,7 @@
 package com.reportme.model;
 
+import com.reportme.model.validation.GroupNameAvailable;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -15,6 +17,7 @@ public class Group implements Serializable {
     private int id;
     @NotNull
     @Size(min = 6, max = 40)
+    @GroupNameAvailable
     private String name;
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private List<Notification> notificationList = new ArrayList<>();
