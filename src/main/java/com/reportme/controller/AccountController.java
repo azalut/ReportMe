@@ -66,7 +66,6 @@ public class AccountController {
 
     @RequestMapping(value = "/delete/{groupName}")
     public String deleteGroup(@PathVariable("groupName") String groupName) {
-        System.out.println("WLASNIE USUWAM GRUPE " + groupName);
         groupService.deleteByName(groupName);
         return "redirect:/account/mygroups";
     }
